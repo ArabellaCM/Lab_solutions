@@ -33,14 +33,14 @@ select title from film where film_id in
 	(select category_id from category where name like "Family"));
     
 -- Question 5    
-select customer.first_name, customer.last_name, address.address from customer 
+select customer.first_name, customer.last_name, customer.email from customer 
 join address on address.address_id = customer.address_id
 where customer.address_id in
 	(select address_id from address where city_id in
 		(select city_id from city where country_id =
 			(select country_id from country where country = "Canada")));      
             
-select customer.first_name, customer.last_name, address.address, city.city, country.country
+select customer.first_name, customer.last_name, customer.email
 from customer join address on address.address_id = customer.address_id
 join city on address.city_id = city.city_id
 join country on city.country_id = country.country_id
